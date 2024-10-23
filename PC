@@ -1,0 +1,649 @@
+*******************************Prime AND FIBO*****************************************
+(PRIME)
+int flag = 0;
+            int Validate = int.Parse(TextBox1.Text);
+            for (int i = 1; i <= Validate; i++)
+            {
+                if (Validate % i == 0)
+                {
+                    flag++;
+                }
+            }
+            if (flag == 2)
+            {
+                Label1.Text = "result: " + Validate + " is a prime number";
+            }
+            else
+            {
+                Label1.Text = "result: " + Validate + " is not a prime number";
+            }
+(FIBO)
+int n1 = 0, n2 = 1, n3, i;
+            int Validate = int.Parse(TextBox1.Text);
+            Label1.Text = (n1 + "\n" + n2 + "\n");
+            for (i = 2; i < Validate; ++i)
+            {
+                n3 = n1 + n2;
+                Label1.Text += n3.ToString() + "\n";
+                n1 = n2;
+                n2 = n3;
+            }
+
+********************************Boxed and Unboxed***************************************
+int valueType = Convert.ToInt32(TextBox1.Text);
+object boxed = valueType;
+Label1.Text = "Boxed Value:" + boxed;
+int unboxed = (int)boxed;
+Label2.Text = "Unboxed Value:" + unboxed;
+
+(CONSOLE)
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace hARS_PRAC2_A_
+{
+class Program
+{
+public static void Main(string[] args)
+{
+int a = 10;   // Value Type 
+object obj = a;   // Refence Type 
+Console.WriteLine("a={0} ", a);
+Console.WriteLine("obj={0}", obj);
+int b = (int)obj;
+Console.WriteLine("b={0}", b);
+Console.ReadKey(); // To hold the output 
+}
+}
+}
+
+
+**********************************READ AND WRITE COOKIE******************************
+(WRITE)
+ // Get the value entered in the textbox
+tring cookieValue = TextBox1.Text;
+if (!string.IsNullOrEmpty(cookieValue))
+{
+// Create a new cookie
+HttpCookie cookie = new HttpCookie("MyCookie", cookieValue);
+// Set the cookie to expire after 1 minute (optional)
+cookie.Expires = DateTime.Now.AddMinutes(1);
+// Add the cookie to the response to save it on the client's browser
+Response.Cookies.Add(cookie);
+Label1.Text = $"Cookie has been set with value: {cookieValue}";
+}
+else
+{
+Label1.Text = "Please enter a value for the cookie.";
+}
+(READ)
+// Try to retrieve the cookie from the client's browser
+HttpCookie cookie = Request.Cookies["MyCookie"];
+if (cookie != null)
+{
+// Display the value of the cookie
+ Label1.Text = $"Cookie Value: {cookie.Value}";
+}
+else
+{
+ Label1.Text = "No cookie found with the name 'MyCookie'.";
+}
+
+***********************************FACTORIAL,CUBE,FIBO**************************************
+(FACTORIAL)
+ if(TextBox1.Text!="")
+{
+int Validate = int.Parse(TextBox1.Text);
+int fact = 1;
+for(int i=1;i<=Validate;i++)
+{
+fact = fact * i;
+}
+Label1.Text = "Result::" + fact.ToString();
+}
+
+(CUBE)
+int Validate = int.Parse(TextBox1.Text);
+Label1.Text = "Result:" + (Validate * Validate * Validate).ToString();
+
+(FIBO)
+int n1 = 0, n2 = 1, n3, i;
+int Validate = int.Parse(TextBox1.Text);
+Label1.Text = (n1 + "\n" + n2 + "\n");
+for(i=2;i<Validate;++i)
+{
+n3 = n1 + n2;
+Label1.Text += n3.ToString() + "\n";
+n1 = n2;
+n2 = n3;
+}
+
+*******************************AD ROTATOR*************************************
+<Advertisements>
+	<Ad>
+		<ImageUrl>https://mkscollege.edu.in/wp-content/uploads/2022/04/mks-home-page-logo-wid-25-yrs-4.png</ImageUrl>
+		<NavigateUrl>https://mkscollege.edu.in/</NavigateUrl>
+		<AlternateText>Ad 1</AlternateText>
+		<Impressions>100</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>https://1.bp.blogspot.com/-JF-Zvu1PHrs/XuI60PdZhsI/AAAAAAAADg0/VE5m6IQJt3klDc_-rK-3zH4Q4EcFfFdJwCNcBGAsYHQ/w1600/Master.png</ImageUrl>
+		<NavigateUrl>https://mu.ac.in/</NavigateUrl>
+		<AlternateText>Ad 2</AlternateText>
+		<Impressions>250</Impressions>
+	</Ad>
+	<Ad>
+		<ImageUrl>https://www.enext.lk/assets/images/backgrounds/unnamed.png</ImageUrl>
+		<NavigateUrl>https://e-next.in/bsc-it/sem5/</NavigateUrl>
+		<AlternateText>Ad 3</AlternateText>
+		<Impressions>150</Impressions>
+	</Ad>
+</Advertisements>
+
+******************************DIVIDEBYZEROEXCEPTION*************************************************
+(#html#)
+     <title>Exception Handling Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 50px;
+        }
+        .container {
+            width: 400px;
+            margin: 0 auto;
+        }
+        input[type="text"] {
+            padding: 10px;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        label {
+            font-size: 14px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <h1>Exception Handling Demo</h1>
+            <asp:Label ID="lblDivideByZero" runat="server" Text="Enter a number to divide by zero:" />
+            <asp:TextBox ID="txtDivide" runat="server" />
+            <asp:Button ID="btnDivide" runat="server" Text="Divide" OnClick="btnDivide_Click" />
+            <asp:Label ID="lblDivideResult" runat="server" ForeColor="Red" />
+            <br /><br />
+            
+            <asp:Label ID="lblArrayIndex" runat="server" Text="Enter an array index (0-2):" />
+            <asp:TextBox ID="txtArrayIndex" runat="server" />
+            <asp:Button ID="btnCheckArray" runat="server" Text="Check Array" OnClick="btnCheckArray_Click" />
+            <asp:Label ID="lblArrayResult" runat="server" ForeColor="Red" />
+        </div>
+    </form>
+</body>
+</html>
+
+
+(#btndivide#)
+ try
+            {
+                int num = int.Parse(txtDivide.Text);
+                int result = num / 0; // Intentional divide by zero
+            }
+            catch (DivideByZeroException ex)
+            {
+                lblDivideResult.Text = "Error: " + ex.Message;
+            }
+            catch (FormatException)
+            {
+                lblDivideResult.Text = "Please enter a valid number.";
+            }
+(#btncheckarray#)
+try
+            {
+                int index = int.Parse(txtArrayIndex.Text);
+                int[] arr = new int[] { 10, 20, 30 };
+                int value = arr[index]; // Intentional index out of range
+                lblArrayResult.Text = "Value at index " + index + " is: " + value;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                lblArrayResult.Text = "Error: " + ex.Message;
+            }
+            catch (FormatException)
+            {
+                lblArrayResult.Text = "Please enter a valid number.";
+            }
+*****************************************CALENDAR*************************************************
+(#HTML#)
+<title>Calendar Control Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+        }
+        .calendar-section {
+            margin-bottom: 20px;
+        }
+        .vacation {
+            color: red;
+            font-weight: bold;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <h1>Calendar Control Demo</h1>
+
+            <div class="calendar-section">
+                <asp:Calendar ID="Calendar1" runat="server" 
+                              OnSelectionChanged="Calendar1_SelectionChanged" 
+                              OnDayRender="Calendar1_DayRender"></asp:Calendar>
+            </div>
+
+            <asp:Label ID="lblMessage" runat="server" 
+                       Text="Select a date to see a message." 
+                       Font-Bold="True"></asp:Label>
+
+            <br /><br />
+
+            <div class="calendar-section">
+                <h2>Calculate Date Difference</h2>
+
+                <asp:Calendar ID="Calendar2" runat="server" 
+                              OnSelectionChanged="Calendar2_SelectionChanged"></asp:Calendar>
+
+                <asp:Calendar ID="Calendar3" runat="server" 
+                              OnSelectionChanged="Calendar3_SelectionChanged"></asp:Calendar>
+
+                <asp:Label ID="lblDateDifference" runat="server" 
+                           Text="Select two dates to see the difference." 
+                           Font-Bold="True"></asp:Label>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
+
+(#ASPX#)
+using System;
+
+namespace CalendarControlApp
+{
+    public partial class CalendarControlApp : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                // Initial message for the label.
+                lblMessage.Text = "Select a date to see a message.";
+                lblDateDifference.Text = "Select two dates to see the difference.";
+            }
+        }
+
+        protected void Calendar1_SelectionChanged(object sender, EventArgs e)
+        {
+            // Display the selected date from the first calendar.
+            lblMessage.Text = $"You selected: {Calendar1.SelectedDate.ToLongDateString()}";
+        }
+
+        protected void Calendar1_DayRender(object sender, System.Web.UI.WebControls.DayRenderEventArgs e)
+        {
+            // Example: Mark Sundays in red as "vacation".
+            if (e.Day.IsWeekend)
+            {
+                e.Cell.ForeColor = System.Drawing.Color.Red;
+                e.Cell.Font.Bold = true;
+                e.Cell.ToolTip = "Weekend!";
+            }
+        }
+
+        protected void Calendar2_SelectionChanged(object sender, EventArgs e)
+        {
+            // Store the selected date from Calendar2 in ViewState.
+            ViewState["Calendar2Date"] = Calendar2.SelectedDate;
+            CalculateDateDifference();
+        }
+
+        protected void Calendar3_SelectionChanged(object sender, EventArgs e)
+        {
+            // Store the selected date from Calendar3 in ViewState.
+            ViewState["Calendar3Date"] = Calendar3.SelectedDate;
+            CalculateDateDifference();
+        }
+
+        private void CalculateDateDifference()
+        {
+            if (ViewState["Calendar2Date"] != null && ViewState["Calendar3Date"] != null)
+            {
+                DateTime date1 = (DateTime)ViewState["Calendar2Date"];
+                DateTime date2 = (DateTime)ViewState["Calendar3Date"];
+
+                // Calculate the difference in days.
+                int daysDifference = (date2 - date1).Days;
+
+                // Display the result.
+                lblDateDifference.Text = $"The difference between the two dates is: {Math.Abs(daysDifference)} days.";
+            }
+        }
+    }
+}
+
+*******************************2RADIO BUTTON,LABEL,DROPDOWN*************************************
+(#HTML#)
+    <title>ASP.NET RADIOBUTTON AND DROPDOWN EXAMPLE</title>
+    <style>
+        .radio-group{
+            margin-bottom:15px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Font customization</h2>
+            <div class="radio-group">
+                <asp:Label ID ="Label1" runat="server" Text="Sample Text"></asp:Label>
+                </div>
+            <div class="radio-group">
+                <asp:RadioButton ID="RadioButtonSamll" runat="server" GroupName="FontSize" 
+                    Text="Small" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+                <asp:RadioButton ID="RadioButtonMedium" runat="server" GroupName="FontSize" 
+                    Text="Medium" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+                <asp:RadioButton ID="RadioButtonLarge" runat="server" GroupName="FontSize" 
+                    Text="Large" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+            </div>
+            <div class="radio-group">
+                <asp:RadioButton ID="RadioButtonArial" runat="server" GroupName="FontFace" 
+                    Text="Arial" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+                <asp:RadioButton ID="RadioButtonTimes" runat="server" GroupName="FontFace" 
+                    Text="Times New Roman" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+                <asp:RadioButton ID="RadioButtonCourier" runat="server" GroupName="FontFace" 
+                    Text="Courier New" AutoPostBack="True" OnCheckedChanged="ChangeFont" />
+                </div>
+            <hr />
+            <h2>Country Code Display</h2>
+            <asp:DropDownList ID="DropDownListCountries" runat="server" AutoPostBack="True"
+                OnSelectedIndexChanged="DropDownListCountries_SelectedIndexChanged">
+                <asp:ListItem Text="Select a country" Value=""></asp:ListItem>
+                <asp:ListItem Text="India" Value="+91"></asp:ListItem>
+                <asp:ListItem Text="USA" Value="+1"></asp:ListItem>
+                <asp:ListItem Text="UK" Value="+44"></asp:ListItem>
+                <asp:ListItem Text="Australia" Value="+61"></asp:ListItem>
+            </asp:DropDownList>
+            <asp:TextBox ID="TextBoxCountyCode" runat="server" ReadOnly="True" OnTextChanged="TextBoxCountyCode_TextChanged"></asp:TextBox>
+            </div> 
+    </form>
+</body>
+</html>
+
+(#ASPX#)
+namespace C
+{
+    public partial class R : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void TextBoxCountyCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        protected void ChangeFont(object sender, EventArgs e)
+        {
+            if (RadioButtonSamll.Checked)
+                Label1.Font.Size = FontUnit.Small;
+            else if (RadioButtonMedium.Checked)
+                Label1.Font.Size = FontUnit.Medium;
+            else if (RadioButtonLarge.Checked)
+                Label1.Font.Size = FontUnit.Large;
+
+            if (RadioButtonArial.Checked)
+                Label1.Font.Name = "Arial";
+            else if (RadioButtonTimes.Checked)
+                Label1.Font.Name = "Times New Roman";
+            else if (RadioButtonCourier.Checked)
+                Label1.Font.Name = "Courier New";
+        }
+
+        protected void DropDownListCountries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Display the selected country's code in the TextBox
+            TextBoxCountyCode.Text = DropDownListCountries.SelectedValue;
+        }
+    }
+}
+
+****************************Current webpage submitted how many times*********************************
+(#HTML#)
+<title>Page Submission Counter</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Count Page Submission</h2>
+            <asp:Label ID="lblCounter" runat="server" Text="Page has been submitted 0 times"></asp:Label>
+            <br /><br />
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+        </div>
+    </form>
+</body>
+</html>
+
+(#ASPX#)
+namespace C
+{
+    public partial class p : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                ViewState["SubmissionCount"] = 0;
+            }
+
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
+            //Retrieve the current count from ViewState increment it,and store it back
+            int count = (int)ViewState["SubmissionCount"] + 1;
+            ViewState["SubmissionCount"] = count;
+
+            //update the label with the new count
+            lblCounter.Text = "Page has been submitted"  +  count +  "times";
+
+        }
+    }
+}
+
+************************************DATE PROPERTIES******************************************
+(#HTML#)
+<title>Date Properties</title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <h2>Date properties</h2>
+            <asp:Label ID="lblDateProperties" runat="server" Text=""></asp:Label>
+            <br /><br />
+            <h2>Calculate Days Between Two Years</h2>
+            <label for="txtStartYear">Start Year:</label>
+            <asp:TextBox ID="txtStartYear" runat="server"></asp:TextBox>
+            <br />
+            <label for="txtEndYear">End Year:</label>
+            <asp:TextBox ID="txtEndYear" runat="server"></asp:TextBox>
+            <br /><br />
+            <asp:Button ID="btnCalculate" runat="server" Text="Calculate Days" OnClick="btnCalculate_Click" />
+            <br /><br />
+            <asp:Label ID="lblDaysBetween" runat="server" Text=""></asp:Label>
+        </div>
+    </form>
+</body>
+</html>
+
+(#ASPX#)
+namespace h
+{
+    public partial class g : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                //Display the current date properties
+                DateTime currentDate = DateTime.Now;
+                lblDateProperties.Text = "Current Date Properties:<br />" +
+                    "Year:" + currentDate.Year + "<br />" +
+                    "Month:" + currentDate.Month + "<br />" +
+                    "Day:" + currentDate.Day + "<br />" +
+                    "Hour:" + currentDate.Hour + "<br />" +
+                    "Minute:" + currentDate.Minute + "<br />" +
+                    "Second:" + currentDate.Second + "<br />" +
+                    "Millisecond:" + currentDate.Millisecond;
+            }
+        }
+        protected void btnCalculate_Click(object sender, EventArgs e)
+        {
+            //Get the start and end years from the Textboxes
+            int startyear = int.Parse(txtStartYear.Text);
+            int endyear = int.Parse(txtEndYear.Text);
+            //Ensure the end year is greater than or equal to the start year
+            if (endyear >= startyear)
+            {
+                DateTime startDate = new DateTime(startyear, 1, 1);
+                DateTime endDate = new DateTime(endyear, 12, 31);
+                //calculate the number of days between the two dates
+                TimeSpan difference = endDate - startDate;
+                int totalDays = (int)difference.TotalDays;
+                //Display the result
+                lblDaysBetween.Text = "Total number of days between" + startyear + "and" + endyear + "is" + totalDays + "days.";
+            }
+            else
+            {
+                lblDaysBetween.Text = "End year should be greater than or equal to start years.";
+            }
+        }
+    }
+}
+
+********************************INTERFACEE*********************************
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ANUYA120_PRAC2_C_
+{
+    interface Addition
+    {
+        void add(int n1, int n2);
+    }
+    interface Subtraction
+    {
+        void sub(int n1, int n2);
+    }
+    class CallInterface : Addition, Subtraction
+    {
+        public void add(int n1, int n2)
+        {
+            Console.WriteLine("Addition :" + (n1 + n2));
+        }
+        public void sub(int n1, int n2)
+        {
+            Console.WriteLine("Subtraction :" + (n1 - n2));
+        }
+    }
+    class Programs
+    {
+        public static void Main(string[] args)
+        {
+            CallInterface obj = new CallInterface();
+
+            obj.add(10, 10);
+            obj.sub(100, 10);
+            Console.ReadKey();
+        }
+    }
+}
+
+*****************************STUDENT DETAILS USING GRID VIEW******************************
+(#HTML#)
+<title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div>
+            <asp:GridView ID="GridView" runat="server" AutoGenerateColumns="false" Height="197px" Width="812px" OnSelectedIndexChanged="GridView_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="RollNo" HeaderText="Roll No" />
+                <asp:BoundField DataField="Name" HeaderText="Name" />
+                <asp:BoundField DataField="Class" HeaderText="Class" />
+                <asp:BoundField DataField="Phone" HeaderText="Phone" />
+                <asp:BoundField DataField="Email" HeaderText="Email" />
+            </Columns>
+            </asp:GridView>
+        </div>
+    </form>
+</body>
+</html>
+
+(#ASPX#)
+namespace S
+{
+    public partial class S : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if(!IsPostBack)
+            {
+                BindSDetails();
+            }
+    
+        }
+
+        private void BindWebForm1Details()
+        {
+            List<Student> students = new List<Student>
+            {
+                new Student{RollNo=1,Name="XYZ",Class="TYBSCIT",Phone="1233474647",Email="xyzgmail"},
+                new Student{RollNo=1,Name="XYZ",Class="TYBSCIT",Phone="1233474647",Email="xyzgmail"},
+                new Student{RollNo=1,Name="XYZ",Class="TYBSCIT",Phone="1233474647",Email="xyzgmail"},
+            };
+            GridView.DataSource = students;
+            GridView.DataBind();
+        }
+
+        protected void GridView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
+}
